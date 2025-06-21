@@ -24,6 +24,16 @@ The main idea is to encourage users to “skip” small daily expenses and save 
 - **Visual Progress Tracking:** See progress toward each goal with intuitive progress bars.
 
 ---
+## UI Wireframe
+
+Below is the main wireframe for SkipSave:
+
+![SkipSave Wireframe](docs/wireframe.png)
+
+You can explore the interactive prototype here:  
+[View on Figma](https://www.figma.com/design/akqK2kJkdFBuz3EsUkq3Hw/SkipSave?node-id=0-1&p=f&t=zIDP7vOFWEpZe9Jh-0)
+
+---
 
 ## Tech Stack
 
