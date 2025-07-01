@@ -7,6 +7,7 @@ import io.skipsave.savings_tracker.entity.MicroSaving;
 import io.skipsave.savings_tracker.mapper.MicroSavingMapper;
 import io.skipsave.savings_tracker.service.GoalService;
 import io.skipsave.savings_tracker.service.MicroSavingService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,9 +30,8 @@ public class MicroSavingController {
     }
 
 
-    // not public methods
     @PostMapping("/{goalId}")
-    ResponseEntity<MicroSavingDTO> createMicroSaving(@PathVariable Long goalId, @RequestBody MicroSavingDTO microSavingDTO) {
+    ResponseEntity<MicroSavingDTO> createMicroSaving(@PathVariable Long goalId, @Valid  @RequestBody MicroSavingDTO microSavingDTO) {
         Optional<Goal> goalOpt = goalService.getGoalById(goalId);
         if (goalOpt.isEmpty()) {
             return ResponseEntity.notFound().build();
@@ -63,7 +63,7 @@ public class MicroSavingController {
     }
 
     @PutMapping("/{id}")
-    ResponseEntity<MicroSavingDTO> updateMicroSaving(@PathVariable Long id, @RequestBody MicroSavingDTO microSavingDTO) {
+    ResponseEntity<MicroSavingDTO> updateMicroSaving(@PathVariable Long id, @Valid @RequestBody MicroSavingDTO microSavingDTO) {
         Optional<Goal> goalOpt = goalService.getGoalById(microSavingDTO.getGoalId());
         if (goalOpt.isEmpty()) {
             return ResponseEntity.notFound().build();

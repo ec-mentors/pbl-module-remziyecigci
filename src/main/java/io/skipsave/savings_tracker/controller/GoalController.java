@@ -4,6 +4,7 @@ import io.skipsave.savings_tracker.dto.GoalDTO;
 import io.skipsave.savings_tracker.entity.Goal;
 import io.skipsave.savings_tracker.mapper.GoalMapper;
 import io.skipsave.savings_tracker.service.GoalService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,7 +42,7 @@ public class GoalController {
 
 
     @PostMapping
-    ResponseEntity<GoalDTO> createGoal(@RequestBody GoalDTO goalDTO) {
+    ResponseEntity<GoalDTO> createGoal( @Valid @RequestBody GoalDTO goalDTO) {
         Goal goal = GoalMapper.toEntity(goalDTO);
         Goal created = goalService.createGoal(goal);
         return ResponseEntity.ok(GoalMapper.toDTO(created));
@@ -49,7 +50,7 @@ public class GoalController {
 
 
     @PutMapping("/{id}")
-    ResponseEntity<GoalDTO> updateGoal(@PathVariable Long id, @RequestBody GoalDTO goalDTO) {
+    ResponseEntity<GoalDTO> updateGoal(@PathVariable Long id,  @Valid @RequestBody GoalDTO goalDTO) {
         Goal goal = GoalMapper.toEntity(goalDTO);
         try {
             Goal updated = goalService.updateGoal(id, goal);
