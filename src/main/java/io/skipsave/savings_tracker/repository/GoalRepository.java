@@ -1,4 +1,8 @@
 package io.skipsave.savings_tracker.repository;
 
-public class GoalRepository {
+import io.skipsave.savings_tracker.entity.Goal;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface GoalRepository extends JpaRepository<Goal, Long> {
+
 }
