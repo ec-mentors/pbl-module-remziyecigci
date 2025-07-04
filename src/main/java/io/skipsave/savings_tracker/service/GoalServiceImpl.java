@@ -48,4 +48,8 @@ public class GoalServiceImpl implements GoalService {
         }
         goalRepository.deleteById(id);
     }
+    @Override
+    public boolean existsById(Long id) {
+        return goalRepository.existsById(id);
+    }
 }

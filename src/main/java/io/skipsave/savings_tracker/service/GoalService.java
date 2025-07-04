@@ -11,4 +11,5 @@ public interface GoalService {
     Optional<Goal> getGoalById(Long id);
     Goal updateGoal(Long id, Goal goal);
     void deleteGoal(Long id);
+    boolean existsById(Long id);
 }
