@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SkipSave | Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<div class="dashboard-frame">
+    <div class="dashboard-total">
+        <span class="label">Total Savings</span>
+        <div class="total-amount" th:text="${totalSavings}">0</div>
+    </div>
+
+    <div th:if="${goals == null or #lists.isEmpty(goals)}" style="margin:32px 0;text-align:center;color:#aaa;">
+        No goals yet!
+    </div>
+
+    <div class="goal-card-box" th:each="goal : ${goals}">
+        <div class="goal-card"
+             th:onclick="'window.location.href=\'/goal/' + ${goal.id} + '\''"
+             style="cursor:pointer;">
+            <div class="goal-header">
+                <div>
+                    <span class="goal-title" th:text="${goal.title}">Goal Title</span>
+                    <div class="goal-stats">
+                        <span th:text="|€${goal.savedAmount != null ? goal.savedAmount : 0} / €${goal.targetAmount != null ? goal.targetAmount : 0}|"></span>
+
+                    </div>
+                </div>
+                <div class="goal-actions" style="display:flex; gap:10px;">
+                    <a class="btn-edit" th:href="@{'/goal/edit/' + ${goal.id}}" onclick="event.stopPropagation();">Edit</a>
+                    <a class="btn-delete" th:href="@{'/goal/delete/' + ${goal.id}}" onclick="event.stopPropagation();">Delete</a>
+                </div>
+            </div>
+            <div class="goal-bar-bg">
+                <div class="goal-bar"
+                     th:style="|width:${(goal.savedAmount != null ? goal.savedAmount : 0) * 100 / (goal.targetAmount != null && goal.targetAmount != 0 ? goal.targetAmount : 1)}%;|">
+                </div>
+            </div>
+            <div class="goal-bar-label"
+                 th:text="|${(goal.savedAmount != null and goal.targetAmount != null and goal.targetAmount != 0) ? #numbers.formatDecimal((goal.savedAmount * 100.0) / goal.targetAmount, 0, 2) : 0}% complete|">
+            </div>
+        </div>
+    </div>
+    <div class="create-new-goal-box">
+        <div class="create-goal-card" onclick="window.location.href='/goal/new'" style="cursor:pointer;">
+            <b>Create New Goal</b>
+            <div class="plus-circle">+</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

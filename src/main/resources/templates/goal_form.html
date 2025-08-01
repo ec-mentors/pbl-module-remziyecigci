@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${goal.id == null} ? 'Create Goal' : 'Edit Goal'">Goal Form</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<div class="container form-container">
+    <h2 th:text="${goal.id == null} ? 'Create New Goal' : 'Edit Goal'"></h2>
+    <form th:action="@{${formAction}}" th:object="${goal}" method="post" class="form">
+        <div class="form-group">
+            <label for="title">Goal Title</label>
+            <input id="title" type="text" th:field="*{title}" required placeholder="e.g. Coffee Machine" />
+        </div>
+        <div class="form-group">
+            <label for="targetAmount">Target Amount (€)</label>
+            <input id="targetAmount" type="number" th:field="*{targetAmount}" min="1" required placeholder="e.g. 1000" />
+        </div>
+
+        <div class="form-actions">
+            <a th:href="@{/}" class="btn-secondary">Cancel</a>
+            <button type="submit" class="btn-primary" th:text="${goal.id == null} ? 'Create' : 'Update'"></button>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>

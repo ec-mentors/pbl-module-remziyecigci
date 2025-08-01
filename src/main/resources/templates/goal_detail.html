@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Goal Details</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<div class="goal-detail-card">
+    <div class="goal-detail-header">
+        <div class="goal-detail-title" th:text="${goal.title}">Goal Title</div>
+    </div>
+    <div class="goal-detail-progress-box">
+        <div class="goal-detail-circle">
+            <span th:text="${progressPercent != null} ? ${#numbers.formatDecimal(progressPercent, 0, 0)} : 0">0</span>%
+        </div>
+
+        <div class="goal-detail-summary">
+            <b th:text="|€${goal.savedAmount != null ? goal.savedAmount : 0} saved|"></b>
+            <div>
+                Target: €<span th:text="${goal.targetAmount != null ? goal.targetAmount : 0}"></span><br>
+                <span th:text="|Remaining: €${(goal.targetAmount != null ? goal.targetAmount : 0) - (goal.savedAmount != null ? goal.savedAmount : 0)}|"></span>
+            </div>
+        </div>
+        <a th:href="@{|/goal/${goal.id}/saving/new|}" class="btn-add-micro">+ Add</a>
+    </div>
+
+    <div class="history-section">
+        <div style="font-weight:bold;text-align:left;margin-bottom:8px;">Savings History</div>
+        <div th:if="${microSavings == null or #lists.isEmpty(microSavings)}" class="micro-empty">No savings yet.</div>
+        <div th:each="ms : ${microSavings}" class="micro-item">
+            <div class="micro-amount" th:text="|€${ms.amount != null ? ms.amount : 0}|"></div>
+            <div class="micro-desc">
+                <span th:text="${ms.description}"></span>
+                <div class="micro-date" th:text="${ms.date}"></div>
+            </div>
+            <div class="micro-actions">
+                <a th:href="@{'/goal/' + ${goal.id} + '/saving/edit/' + ${ms.id}}" class="btn-edit btn-small">Edit</a>
+                <a th:href="@{'/goal/' + ${goal.id} + '/saving/delete/confirm/' + ${ms.id}}" class="btn-delete btn-small">Delete</a>
+            </div>
+        </div>
+    </div>
+    <a th:href="@{/}" class="btn-back-home"><img src="/img/home.svg" style="width:32px;height:32px;border:none;box-shadow:none;"/></a>
+</div>
+</body>
+</html>
