@@ -9,6 +9,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.Valid;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -28,7 +29,7 @@ public class GoalDTO {
     private Double savedAmount;
 
     @Valid
-    private List<MicroSavingDTO> microSavings;
+    private List<MicroSavingDTO> microSavings = new ArrayList<>();
 
 }
 

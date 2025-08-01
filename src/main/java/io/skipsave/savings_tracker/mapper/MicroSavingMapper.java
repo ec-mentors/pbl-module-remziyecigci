@@ -6,6 +6,7 @@ import io.skipsave.savings_tracker.entity.MicroSaving;
 
 public class MicroSavingMapper {
     public static MicroSavingDTO toDTO(MicroSaving microSaving) {
+        if (microSaving == null) return null;
         MicroSavingDTO dto = new MicroSavingDTO();
         dto.setId(microSaving.getId());
         dto.setAmount(microSaving.getAmount());
@@ -18,6 +19,7 @@ public class MicroSavingMapper {
     }
 
     public static MicroSaving toEntity(MicroSavingDTO dto, Goal goal) {
+        if (dto == null) return null;
         MicroSaving ms = new MicroSaving();
         ms.setId(dto.getId());
         ms.setAmount(dto.getAmount());
