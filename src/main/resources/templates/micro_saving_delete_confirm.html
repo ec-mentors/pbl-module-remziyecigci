@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Delete Micro-Saving</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<div class="container center">
+    <h2>Delete Micro-Saving</h2>
+    <p>Are you sure you want to delete this €<span th:text="${microSaving.amount}"></span> saving?</p>
+    <form th:action="@{'/goal/' + ${goalId} + '/saving/delete/confirm/' + ${microSaving.id}}" method="post">
+        <button type="submit" class="btn-danger">Delete</button>
+        <a th:href="@{'/goal/' + ${goalId}}" class="btn-secondary">Cancel</a>
+    </form>
+</div>
+</body>
+</html>
