@@ -49,6 +49,8 @@ class GoalControllerTest {
 
     @BeforeEach
     void setup() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
         goal = new Goal();
         goal.setId(1L);
         goal.setTitle("Test Goal");
