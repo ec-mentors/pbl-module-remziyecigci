@@ -15,6 +15,7 @@
         No goals yet!
     </div>
 
+
     <div class="goal-card-box" th:each="goal : ${goals}">
         <div class="goal-card"
              th:onclick="'window.location.href=\'/goal/' + ${goal.id} + '\''"

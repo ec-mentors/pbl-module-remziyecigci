@@ -5,6 +5,7 @@
     <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
+<div class="dashboard-frame">
 <div class="container center">
     <h2>Delete Goal</h2>
     <p>Are you sure you want to delete "<span th:text="${goal.title}"></span>"?</p>
@@ -12,6 +13,7 @@
         <button type="submit" class="btn-danger">Delete</button>
         <a th:href="@{/}" class="btn-secondary">Cancel</a>
     </form>
+</div>
 </div>
 </body>
 </html>

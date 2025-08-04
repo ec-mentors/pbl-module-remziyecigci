@@ -339,3 +339,27 @@ input:focus { border-color: #3cbb5c; }
     }
     .goal-bar-bg { width: 95vw; }
 }
+
+.progress-circle {
+    --size: 100px;
+    --thickness: 10px;
+    --progress: 0;
+
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background:
+            conic-gradient(#229944 calc(var(--progress) * 1%), #e0e0e0 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    position: relative;
+}
+
+.progress-text {
+    position: absolute;
+    color: #333;
+}
+

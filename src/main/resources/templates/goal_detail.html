@@ -10,8 +10,8 @@
         <div class="goal-detail-title" th:text="${goal.title}">Goal Title</div>
     </div>
     <div class="goal-detail-progress-box">
-        <div class="goal-detail-circle">
-            <span th:text="${progressPercent != null} ? ${#numbers.formatDecimal(progressPercent, 0, 0)} : 0">0</span>%
+        <div class="progress-circle" th:attr="style=${'--progress:' + progressPercent}">
+            <span class="progress-text" th:text="${progressPercent != null} ? ${#numbers.formatDecimal(progressPercent, 0, 0)} + '%' : '0%'">0%</span>
         </div>
 
         <div class="goal-detail-summary">
@@ -25,7 +25,7 @@
     </div>
 
     <div class="history-section">
-        <div style="font-weight:bold;text-align:left;margin-bottom:8px;">Savings History</div>
+        <div style="font-weight:bold;text-align:center;margin-bottom:8px;">Savings History</div>
         <div th:if="${microSavings == null or #lists.isEmpty(microSavings)}" class="micro-empty">No savings yet.</div>
         <div th:each="ms : ${microSavings}" class="micro-item">
             <div class="micro-amount" th:text="|€${ms.amount != null ? ms.amount : 0}|"></div>
@@ -39,7 +39,10 @@
             </div>
         </div>
     </div>
-    <a th:href="@{/}" class="btn-back-home"><img src="/img/home.svg" style="width:32px;height:32px;border:none;box-shadow:none;"/></a>
+    <div style="text-align: center; margin-top: 2rem;">
+        <a th:href="@{/}" class="btn-edit btn-small">Home</a>
+    </div>
+    </div>
 </div>
 </body>
 </html>

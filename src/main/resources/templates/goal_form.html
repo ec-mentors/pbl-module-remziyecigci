@@ -5,17 +5,24 @@
     <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
+<div class="dashboard-frame">
 <div class="container form-container">
     <h2 th:text="${goal.id == null} ? 'Create New Goal' : 'Edit Goal'"></h2>
     <form th:action="@{${formAction}}" th:object="${goal}" method="post" class="form">
-        <div class="form-group">
-            <label for="title">Goal Title</label>
-            <input id="title" type="text" th:field="*{title}" required placeholder="e.g. Coffee Machine" />
+        <div class="row mb-3">
+            <label for="title" class="col-sm-3 col-form-label">Goal Title</label>
+            <div class="col-sm-9">
+                <input id="title" type="text" th:field="*{title}" class="form-control" required placeholder="e.g. Coffee Machine" />
+            </div>
         </div>
-        <div class="form-group">
-            <label for="targetAmount">Target Amount (€)</label>
-            <input id="targetAmount" type="number" th:field="*{targetAmount}" min="1" required placeholder="e.g. 1000" />
+
+        <div class="row mb-3">
+            <label for="targetAmount" class="col-sm-3 col-form-label">Target Amount (€)</label>
+            <div class="col-sm-9">
+                <input id="targetAmount" type="number" th:field="*{targetAmount}" class="form-control" min="1" required placeholder="e.g. 1000" />
+            </div>
         </div>
+
 
         <div class="form-actions">
             <a th:href="@{/}" class="btn-secondary">Cancel</a>
@@ -23,6 +30,7 @@
         </div>
 
     </form>
+</div>
 </div>
 </body>
 </html>
