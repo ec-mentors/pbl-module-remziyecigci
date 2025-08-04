@@ -47,7 +47,7 @@ public class GoalMapper {
                     .collect(Collectors.toList());
             goal.setMicroSavings(microSavings);
         } else {
-            goal.setMicroSavings(new ArrayList<>()); // NULL SAFE: boş liste
+            goal.setMicroSavings(new ArrayList<>());
         }
         return goal;
 

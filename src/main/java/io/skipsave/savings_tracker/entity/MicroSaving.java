@@ -19,7 +19,7 @@ public class MicroSaving {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Double amount;//
+    private Double amount;
 
     private String description;
 
